@@ -1,7 +1,7 @@
 [user]
-name = Max Kryvych
-[includeIf "gitdir:Projects/Personal/**"]
-path = .gitconfig-personal
+name = {{ .name }}
+email = {{ .personalEmail }}
+signingkey = {{ .personalSigningKey }}
 [includeIf "gitdir:Projects/Work/**"]
 path = .gitconfig-work
 [color]
@@ -40,6 +40,9 @@ mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
 sync = "!git fetch origin -v; git fetch upstream; git rebase upstream/$(git mainbranch); git push"
 ammend = commit --amend
 amend = commit --amend
+pr = "!f() { open \"$(git ls-remote --get-url $(git config --get branch.$(git rev-parse --abbrev-ref HEAD).remote) | sed 's|git@[^:]*:|https://github.com/|' | sed 's|\\.git$||')/compare/$(git config --get branch.$(git rev-parse --abbrev-ref HEAD).merge | cut -d '/' -f 3-)?expand=1\"; }; f"
+hub = "!f() { open \"$(git ls-remote --get-url | sed 's|git@[^:]*:|https://github.com/|' | sed 's|\\.git$||')\"; }; f"
+restore = "!f() { git checkout $(git rev-list -n 1 HEAD -- $1)~1 -- $(git diff --name-status $(git rev-list -n 1 HEAD -- $1)~1 | grep '^D' | cut -f 2); }; f"
 diff-all = !"for name in $(git diff --name-only $1); do git difftool -y $1 $name & done"
 diff-changes = diff --name-status -r
 diff-stat = diff --stat --ignore-space-change -r
@@ -51,6 +54,7 @@ autosetupmerge = true
 [core]
 autocrlf = input
 pager = delta
+excludesfile = {{ .chezmoi.homeDir }}/.config/git/ignore
 [merge]
 verbosity = 5
 tool = diffmerge
@@ -78,3 +82,12 @@ navigate = true
 line-numbers = true
 side-by-side = false
 syntax-theme = Monokai Extended
+{{- if eq .sshAgent "1password" }}
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+{{- else if eq .sshAgent "bitwarden" }}
+[gpg]
+	format = ssh
+{{- end }}

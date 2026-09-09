@@ -5,7 +5,7 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io).
 ## Prerequisites
 
 - macOS with [Homebrew](https://brew.sh) installed
-- [1Password](https://1password.com) (used as the SSH agent, see `private_dot_ssh/private_config`)
+- [1Password](https://1password.com) or [Bitwarden](https://bitwarden.com) (used as the SSH agent, see `private_dot_ssh/private_config.tmpl`)
 
 ## Quick setup
 
@@ -23,6 +23,10 @@ On a brand-new machine without SSH keys set up yet, bootstrap over HTTPS instead
 chezmoi init --apply https://github.com/maxkrivich/dotfiles-config.git
 ```
 
+On first run, chezmoi will prompt once for your full name, personal/work email, personal/work SSH signing key (public key), and which SSH agent (1Password or Bitwarden) to use. Answers are cached in chezmoi's own config, so later `chezmoi apply` runs won't re-prompt.
+
+Commit signing uses `gpg.format = ssh`. With 1Password, `gpg.ssh.program` points at `op-ssh-sign` so signing happens via the agent without the private key ever touching disk. Bitwarden has no equivalent helper yet, so with `sshAgent: bitwarden` signing falls back to the default `ssh-keygen` — verify this actually works before relying on it.
+
 ## Install packages
 
 The `Brewfile` isn't run automatically by chezmoi, install it separately:
@@ -37,13 +41,12 @@ brew bundle --file=~/.local/share/chezmoi/Brewfile
 |---|---|
 | `dot_zshrc` | `~/.zshrc` |
 | `dot_tmux.conf` | `~/.tmux.conf` |
-| `dot_gitconfig` | `~/.gitconfig` |
-| `dot_gitconfig-personal` | `~/.gitconfig-personal` |
-| `dot_gitconfig-work` | `~/.gitconfig-work` |
+| `dot_gitconfig.tmpl` | `~/.gitconfig` |
+| `dot_gitconfig-work.tmpl` | `~/.gitconfig-work` |
 | `dot_config/` | `~/.config/` (ghostty, mise, starship) |
-| `private_dot_ssh/private_config` | `~/.ssh/config` (permissions restricted, contents kept out of `chezmoi diff` output by default) |
+| `private_dot_ssh/private_config.tmpl` | `~/.ssh/config` (permissions restricted, contents kept out of `chezmoi diff` output by default) |
 
-Git identity switches automatically between `.gitconfig-personal` and `.gitconfig-work` based on whether the repo lives under `Projects/Personal/**` or `Projects/Work/**`.
+Git identity defaults to personal everywhere. Only repos under `Projects/Work/**` switch to the work identity via `.gitconfig-work`.
 
 ## Everyday usage
 

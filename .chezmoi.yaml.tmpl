@@ -1,0 +1,13 @@
+{{- $name := promptStringOnce . "name" "Full name" "Max Kryvych" -}}
+{{- $personalEmail := promptStringOnce . "personalEmail" "Personal email" -}}
+{{- $personalSigningKey := promptStringOnce . "personalSigningKey" "Personal SSH signing key (public key)" -}}
+{{- $workEmail := promptStringOnce . "workEmail" "Work email" -}}
+{{- $workSigningKey := promptStringOnce . "workSigningKey" "Work SSH signing key (public key)" -}}
+{{- $sshAgent := promptChoiceOnce . "sshAgent" "SSH agent to use" (list "1password" "bitwarden") "1password" -}}
+data:
+  name: {{ $name | quote }}
+  personalEmail: {{ $personalEmail | quote }}
+  personalSigningKey: {{ $personalSigningKey | quote }}
+  workEmail: {{ $workEmail | quote }}
+  workSigningKey: {{ $workSigningKey | quote }}
+  sshAgent: {{ $sshAgent | quote }}
