@@ -1,0 +1,22 @@
+font-family = Hack Nerd Font
+
+# Theme
+theme = TokyoNight Storm
+
+
+# Shell integration
+shell-integration = zsh
+shell-integration-features = cursor,sudo,ssh-env,ssh-terminfo,path,no-title
+
+
+# Appearance
+background-opacity = 0.80
+background-blur = true
+window-decoration = true
+
+
+# Window size
+window-width = 120
+window-height = 38
+font-size = 13
+window-save-state = never
