@@ -1,6 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-
 [aws]
 symbol = " "
 
@@ -52,8 +51,6 @@ symbol = " "
 
 [directory]
 read_only = " 󰌾"
-truncate_to_repo = true
-truncation_symbol = "…/"
 
 [docker_context]
 symbol = " "
@@ -81,9 +78,6 @@ symbol = " "
 
 [gcloud]
 symbol = "󱇶 "
-format = 'on [$symbol$account(@$project)(\($region\))]($style) '
-[gcloud.region_aliases]
-europe-west4 = 'eu-w4'
 
 [gleam]
 symbol = " "
@@ -128,7 +122,6 @@ symbol = " "
 symbol = " "
 
 [kubernetes]
-disabled = false
 symbol = "󱃾 "
 
 [lua]
@@ -288,8 +281,7 @@ symbol = " "
 symbol = " "
 
 [status]
-disabled = false
-format = '[✖ $status]($style) '
+symbol = " "
 
 [sudo]
 symbol = " "
