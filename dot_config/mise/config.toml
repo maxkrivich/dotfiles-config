@@ -1,4 +1,8 @@
 [tools]
+go = "latest"
+helm = "latest"
+kubectl = "latest"
+kubectx = "latest"
 node = "24"
 python = "3.14"
 terraform = "latest"
