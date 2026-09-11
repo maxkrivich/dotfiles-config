@@ -1,6 +1,8 @@
 tap "manaflow-ai/cmux"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
 # Modern, maintained replacement for ls
@@ -15,6 +17,8 @@ brew "gh"
 brew "git-delta"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Deep clean and optimize your Mac
+brew "mole"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Search tool like grep and The Silver Searcher
@@ -39,6 +43,8 @@ brew "zoxide"
 brew "zsh-autosuggestions"
 # Additional completion definitions for zsh
 brew "zsh-completions"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
 # Terminal-based AI coding assistant
 cask "claude-code"
 # Ghostty-based terminal with vertical tabs and notifications for AI coding agents

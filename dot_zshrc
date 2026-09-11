@@ -33,3 +33,4 @@ alias docker="podman"
 
 eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
