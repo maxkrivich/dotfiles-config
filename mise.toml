@@ -1,0 +1,5 @@
+[tools]
+dagger = "latest"
+jq = "latest"
+kind = "latest"
+shellcheck = "latest"

@@ -19,10 +19,16 @@ brew "mise"
 brew "neovim"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# AI coding agent, built for the terminal
+brew "opencode"
+# Tool for managing OCI containers and pods
+brew "podman"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Text interface for Git repositories
+brew "tig"
 # Terminal multiplexer
 brew "tmux"
 # Extremely fast Python package installer and resolver, written in Rust
@@ -31,6 +37,8 @@ brew "uv"
 brew "zoxide"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# Additional completion definitions for zsh
+brew "zsh-completions"
 # Terminal-based AI coding assistant
 cask "claude-code"
 # Ghostty-based terminal with vertical tabs and notifications for AI coding agents
@@ -40,5 +48,10 @@ cask "codexbar"
 cask "font-hack-nerd-font"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# UI for Kubernetes
+cask "headlamp"
 # Clipboard manager
 cask "maccy"
+go "cmd/go"
+go "cmd/gofmt"
+npm "corepack"

@@ -1,6 +1,7 @@
 [tools]
 go = "latest"
 helm = "latest"
+kind = "0.33.0"
 kubectl = "latest"
 kubectx = "latest"
 node = "24"
